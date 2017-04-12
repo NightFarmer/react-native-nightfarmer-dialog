@@ -26,8 +26,9 @@ class Comp extends Component {
 
     render() {
         return (
-            <Animated.View style={[styles.mask, {opacity:this.maskOpacity}]}>
-                <Animated.View style={[styles.cardView,{opacity:this.cardOpacity, transform:[{scale:this.cardScale}]}]}>
+            <Animated.View style={[styles.mask, {opacity: this.maskOpacity}]}>
+                <Animated.View
+                    style={[styles.cardView, {opacity: this.cardOpacity, transform: [{scale: this.cardScale}]}]}>
                     <Text style={styles.title}>{this.info.title}</Text>
                     <Text style={styles.message}>{this.info.message}</Text>
                     <View style={styles.buttonLayout}>
@@ -71,7 +72,7 @@ class Comp extends Component {
         }
         this.info.buttonList.forEach((item, index) => {
             if (index > 0) {
-                views.push(<View style={styles.buttonSplit} key={"split-"+index}/>)
+                views.push(<View style={styles.buttonSplit} key={"split-" + index}/>)
             }
             let leftRadius = 0;
             let rightRadius = 0;
@@ -83,15 +84,15 @@ class Comp extends Component {
             }
             views.push(
                 <TouchableHighlight
-                    style={[styles.button,{borderBottomLeftRadius:leftRadius,borderBottomRightRadius:rightRadius}]}
+                    style={[styles.button, {borderBottomLeftRadius: leftRadius, borderBottomRightRadius: rightRadius}]}
                     underlayColor="#0002"
-                    onPress={()=>{
-                                        if (item.callback){
-                                            item.callback()
-                                        }
-                                        this.dismissWithAnim()
-                                    }}
-                    key={"button-"+index}
+                    onPress={() => {
+                        if (item.callback) {
+                            item.callback()
+                        }
+                        this.dismissWithAnim()
+                    }}
+                    key={"button-" + index}
                 >
                     <Text style={styles.buttonText}>{item.label}</Text>
                 </TouchableHighlight>
@@ -122,7 +123,10 @@ class Comp extends Component {
                 duration: 250
             },
         ).start(() => {
-            this.props.alertBean.dismissInvokeHandler()
+            this.props.alertBean.dismissInvokeHandler();
+            if (this.props.alertBean.dismissCallback) {
+                this.props.alertBean.dismissCallback()
+            }
         });
     };
 
@@ -158,7 +162,7 @@ class Alert {
     dismissed = false;
 
     show = () => {
-        Actions.insertModule(<Comp alertBean={this} dismissCallback={(callBack)=>this.dismissInvokeHandler=callBack}
+        Actions.insertModule(<Comp alertBean={this} dismissCallback={(callBack) => this.dismissInvokeHandler = callBack}
         />)
     };
 
