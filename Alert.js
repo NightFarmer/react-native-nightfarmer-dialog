@@ -124,8 +124,8 @@ class Comp extends Component {
             },
         ).start(() => {
             this.props.alertBean.dismissInvokeHandler();
-            if (this.props.alertBean.dismissCallback) {
-                this.props.alertBean.dismissCallback()
+            if (this.props.alertBean.info.dismissCallback) {
+                this.props.alertBean.info.dismissCallback()
             }
         });
     };
