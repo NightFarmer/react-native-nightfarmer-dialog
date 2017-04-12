@@ -102,6 +102,9 @@ class Comp extends Component {
     };
 
     dismissWithAnim = () => {
+        if (this.props.alertBean.info.dismissCallback) {
+            this.props.alertBean.info.dismissCallback()
+        }
         Animated.timing(
             this.maskOpacity,
             {
@@ -124,9 +127,6 @@ class Comp extends Component {
             },
         ).start(() => {
             this.props.alertBean.dismissInvokeHandler();
-            if (this.props.alertBean.info.dismissCallback) {
-                this.props.alertBean.info.dismissCallback()
-            }
         });
     };
 
