@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
         paddingRight: "10%",
         paddingBottom: 8,
         marginTop: 5,
-        marginBottom: 10
+        marginBottom: 15
     },
     buttonLayout: {
         flexDirection: "row",
