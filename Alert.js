@@ -208,7 +208,8 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         fontSize: 16,
         color: "#333",
-        padding: 20
+        paddingTop: 20,
+        paddingBottom: 10
     },
     message: {
         fontSize: 14,
