@@ -217,14 +217,14 @@ const styles = StyleSheet.create({
         paddingLeft: "10%",
         paddingRight: "10%",
         paddingBottom: 8,
-        marginTop: 5,
-        marginBottom: 15
+        marginTop: 0,
+        marginBottom: 10
     },
     buttonLayout: {
         flexDirection: "row",
         borderTopWidth: StyleSheet.hairlineWidth,
         borderTopColor: "#DDD",
-        height: 40,
+        height: 45,
         alignSelf: "stretch"
     },
     buttonSplit: {
