@@ -201,17 +201,17 @@ const styles = StyleSheet.create({
     cardView: {
         backgroundColor: "#FFF",
         borderRadius: 8,
-        width: "60%",
+        width: "80%",
         alignItems: "center"
     },
     title: {
         fontWeight: "bold",
-        fontSize: 13,
+        fontSize: 15,
         color: "#333",
         padding: 10
     },
     message: {
-        fontSize: 12,
+        fontSize: 14,
         color: "#555",
         paddingLeft: "10%",
         paddingRight: "10%",
@@ -235,7 +235,7 @@ const styles = StyleSheet.create({
         justifyContent: "center"
     },
     buttonText: {
-        fontSize: 13,
+        fontSize: 15,
         color: "#037BFF",
     }
 
