@@ -237,6 +237,7 @@ const styles = StyleSheet.create({
     buttonText: {
         fontSize: 15,
         color: "#037BFF",
+        padding: 5
     }
 
 });
