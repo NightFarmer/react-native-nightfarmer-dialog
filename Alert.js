@@ -215,13 +215,15 @@ const styles = StyleSheet.create({
         color: "#555",
         paddingLeft: "10%",
         paddingRight: "10%",
-        paddingBottom: 8
+        paddingBottom: 8,
+        marginTop: 10,
+        marginBottom: 10
     },
     buttonLayout: {
         flexDirection: "row",
         borderTopWidth: StyleSheet.hairlineWidth,
         borderTopColor: "#DDD",
-        height: 33,
+        height: 40,
         alignSelf: "stretch"
     },
     buttonSplit: {
@@ -237,7 +239,6 @@ const styles = StyleSheet.create({
     buttonText: {
         fontSize: 15,
         color: "#037BFF",
-        padding: 5
     }
 
 });
