@@ -206,9 +206,9 @@ const styles = StyleSheet.create({
     },
     title: {
         fontWeight: "bold",
-        fontSize: 15,
+        fontSize: 16,
         color: "#333",
-        padding: 10
+        padding: 20
     },
     message: {
         fontSize: 14,
@@ -216,7 +216,7 @@ const styles = StyleSheet.create({
         paddingLeft: "10%",
         paddingRight: "10%",
         paddingBottom: 8,
-        marginTop: 10,
+        marginTop: 5,
         marginBottom: 10
     },
     buttonLayout: {
