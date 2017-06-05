@@ -1,84 +1,61 @@
 /**
- * Created by zhangfan on 17-4-7.
+ * Created by zhangfan on 17-4-11.
  */
-import React, {
-    Component,
-    PropTypes,
-} from 'react';
-
+import React, {Component, PureComponent} from 'react';
 import {
-    View,
+    AppRegistry,
     StyleSheet,
     Text,
-    InteractionManager
+    View,
+    Navigator
 } from 'react-native';
 
-class RootMask extends Component {
+class ModuleRoot extends PureComponent {
+
+    state = {
+        viewList: []
+    };
+
+    sequence = 0;
 
     render() {
         return (
-            <View style={styles.container}>
-                {this.state.actView && this.state.actView.component }
+            <View style={{position: "absolute", left: 0, right: 0, top: 0, bottom: 0}}>
+                {this.state.viewList.map(this.renderItem)}
             </View>
         )
     }
 
-    state = {
-        actView: null
-    };
+    renderItem = (it) =>
+        <View style={{position: "absolute", left: 0, right: 0, top: 0, bottom: 0}} key={it.id}>
+            {it.component}
+        </View>;
 
-    callQueue = [];
 
-
-    _pushView = (it) => {
-        it.dismissCallback = () => {
-            if (this.callQueue.length > 0) {
-                let item = this.callQueue.shift();
-                this._pushView(item)
-            } else {
-                this._setActView(null)
+    insertModule = (moduleView) => {
+        let moduleBean = new ModuleBean();
+        moduleView.props.dismissCallback(() => {
+            let index = this.state.viewList.indexOf(moduleBean);
+            if (index > -1) {
+                this.state.viewList.splice(index, 1);
+                this.setState({})
             }
-        };
-        this._setActView(it)
-    };
-
-    _setActView = (it) => {
-        InteractionManager.runAfterInteractions(() => {//等待没有任何动画和触摸的时候再回调
-            this.setState({actView: it});
-        })
-    };
-
-
-    // dismiss = (it) => {
-    //     it.compRef.dismiss()
-    // };
-
+        });
+        moduleBean.id = this.sequence++;
+        moduleBean.component = moduleView;
+        this.state.viewList.push(moduleBean);
+        this.setState({})
+    }
 
     componentWillMount() {
-        this.props.handlerShow(this.show);
+        this.props.handlerInsertModule(this.insertModule);
     };
 
-    show = (it) => {
-        if (this.state.actView) {
-            this.callQueue.push(it);
-            return
-        }
-        this._pushView(it);
-        return it;
-    };
 }
 
-const styles = StyleSheet.create({
-    container: {
-        position: "absolute",
-        left: 0,
-        right: 0,
-        top: 0,
-        bottom: 0,
-        flexDirection: "row",
-        justifyContent: "center",
-    }
-});
+class ModuleBean {
+    id = 0;
+    component = null;
+}
 
-
-export default RootMask
+export default ModuleRoot

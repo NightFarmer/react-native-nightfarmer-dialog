@@ -162,9 +162,7 @@ class Alert {
     dismissed = false;
 
     show = () => {
-        console.info("show...alert")
-        return;
-        Actions.insertModule(<Comp alertBean={this} dismissCallback={(callBack) => this.dismissInvokeHandler = callBack}
+        handler.insertModule(<Comp alertBean={this} dismissCallback={(callBack) => this.dismissInvokeHandler = callBack}
         />)
     };
 
