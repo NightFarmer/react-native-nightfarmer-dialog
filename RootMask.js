@@ -38,7 +38,8 @@ class ModuleRoot extends PureComponent {
             let index = this.state.viewList.indexOf(moduleBean);
             if (index > -1) {
                 this.state.viewList.splice(index, 1);
-                this.setState({})
+                // this.setState({})
+                this.forceUpdate();
             }
         });
         moduleBean.id = this.sequence++;
