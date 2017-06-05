@@ -20,7 +20,7 @@ class ModuleRoot extends PureComponent {
 
     render() {
         return (
-            <View style={{position: "absolute", left: 0, right: 0, top: 0, bottom: 0, backgroundColor:"#FF0"}}>
+            <View style={{position: "absolute", left: 0, right: 0, top: 0, bottom: 0}}>
                 {this.state.viewList.map(this.renderItem)}
             </View>
         )
@@ -33,6 +33,7 @@ class ModuleRoot extends PureComponent {
 
 
     insertModule = (moduleView) => {
+        console.info("charu..")
         let moduleBean = new ModuleBean();
         moduleView.props.dismissCallback(() => {
             let index = this.state.viewList.indexOf(moduleBean);
