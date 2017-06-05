@@ -27,7 +27,7 @@ AppRegistry.registerComponent = function (appKey, getAppComponent) {
                 return (
                     <View style={styles.container}>
                         <OriginAppComponent {...this.props} />
-                        <RootMask handlerShow={(it)=>handler.insertModule=it}/>
+                        <RootMask handlerInsertModule={(it)=>handler.insertModule=it}/>
                     </View>
                 );
             };
