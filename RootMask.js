@@ -33,7 +33,6 @@ class ModuleRoot extends PureComponent {
 
 
     insertModule = (moduleView) => {
-        console.info("charu..")
         let moduleBean = new ModuleBean();
         moduleView.props.dismissCallback(() => {
             let index = this.state.viewList.indexOf(moduleBean);
@@ -45,7 +44,8 @@ class ModuleRoot extends PureComponent {
         moduleBean.id = this.sequence++;
         moduleBean.component = moduleView;
         this.state.viewList.push(moduleBean);
-        this.setState({})
+        // this.setState({})
+        this.forceUpdate();
     }
 
     componentWillMount() {
