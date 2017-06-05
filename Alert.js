@@ -9,9 +9,9 @@ import {
     Platform,
     BackAndroid
 } from 'react-native'
-import {Actions} from 'react-native-nightfarmer-router'
+// import {Actions} from 'react-native-nightfarmer-router'
 // import {Actions} from '../router'
-
+import handler from './AppRegistryInjection'
 
 class Comp extends Component {
     info = this.props.alertBean.info;
@@ -162,6 +162,8 @@ class Alert {
     dismissed = false;
 
     show = () => {
+        console.info("show...alert")
+        return;
         Actions.insertModule(<Comp alertBean={this} dismissCallback={(callBack) => this.dismissInvokeHandler = callBack}
         />)
     };
