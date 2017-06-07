@@ -17,7 +17,8 @@ class Comp extends Component {
     info = this.props.alertBean.info;
     maskOpacity = new Animated.Value(0);
     cardOpacity = new Animated.Value(0);
-    cardScale = new Animated.Value(1.2);
+
+    offset = new Animated.Value(-100);
 
     constructor(props) {
         super(props);
@@ -25,10 +26,13 @@ class Comp extends Component {
     }
 
     render() {
+        let customerStyle = {};
+        // if(this.info.)
+        customerStyle.bottom = this.offset;
         return (
             <Animated.View style={[styles.mask, {opacity: this.maskOpacity}]}>
                 <Animated.View
-                    style={[styles.cardView, {opacity: this.cardOpacity, transform: [{scale: this.cardScale}]}]}>
+                    style={[styles.cardView, {opacity: this.cardOpacity}, customerStyle]}>
                     {this.info.content}
                 </Animated.View>
             </Animated.View>
@@ -51,9 +55,9 @@ class Comp extends Component {
             },
         ).start();
         Animated.timing(
-            this.cardScale,
+            this.offset,
             {
-                toValue: 1,
+                toValue: 0,
                 duration: 250
             },
         ).start();
@@ -76,16 +80,16 @@ class Comp extends Component {
                 toValue: 0,
                 duration: 250
             },
-        ).start();
-        Animated.timing(
-            this.cardScale,
-            {
-                toValue: 0.8,
-                duration: 250
-            },
         ).start(() => {
             this.props.alertBean.dismissInvokeHandler();
         });
+        Animated.timing(
+            this.offset,
+            {
+                toValue: -100,
+                duration: 250
+            },
+        ).start();
     };
 
     handlerCallBack = () => {
@@ -152,9 +156,9 @@ const styles = StyleSheet.create({
     },
     cardView: {
         backgroundColor: "#FFF",
-        borderRadius: 8,
-        width: "80%",
-        alignItems: "center"
+        alignItems: "center",
+        justifyContent: "center",
+        position: "absolute",
     },
     title: {
         fontWeight: "bold",
