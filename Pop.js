@@ -98,6 +98,7 @@ class Comp extends Component {
     };
 
     componentDidMount() {
+        this.props.alertBean.ref = this;
         if (this.props.alertBean.dismissed) {
             this.dismissWithAnim()
         } else {
@@ -122,6 +123,7 @@ class Pop {
     dismissInvokeHandler = null;
     info = null;
     dismissed = false;
+    ref = null;
 
     insert = () => {
         handler.insertModule(<Comp alertBean={this}
@@ -130,6 +132,7 @@ class Pop {
 
     dismiss = () => {
         this.dismissed = true;
+        this.ref && this.ref.dismissWithAnim()
     };
 
     static show(alertInfo) {
